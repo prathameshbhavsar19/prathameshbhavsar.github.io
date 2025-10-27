@@ -1,595 +1,585 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Prathamesh Bhavsar Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prathamesh Bhavsar — I build useful, data‑driven stuff</title>
+  <meta name="description" content="Hey! I'm Prathamesh. I ship handy, data‑driven things: APIs, ETL/data pipelines, and AI bits. Projects, resume, and contact." />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:title" content="Prathamesh Bhavsar — I build useful, data‑driven stuff" />
+  <meta property="og:description" content="Projects, resume, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og.png" />
+  <meta name="theme-color" content="#121417" />
+  <style>
+    /* ==========================
+       Dark Grey (default) — Purple × Amber accents
+       ========================== */
+    :root{
+      --bg:#121417;          /* page background (dark grey) */
+      --bg-soft:#181b20;     /* card background */
+      --txt:#e7e9ee;         /* main text */
+      --sub:#b0b3b8;         /* secondary text */
+      --brand:#8b5cf6;       /* purple */
+      --brand-2:#f59e0b;     /* amber */
+      --ok:#10b981;          /* green */
+      --warn:#f59e0b;        /* amber */
+      --muted:#2a2e36;       /* borders / separators */
+      --shadow: 0 12px 36px rgba(0,0,0,.45);
+      --radius: 16px;
+      /* portrait background composed from theme accents */
+      --portrait-bg: radial-gradient(65% 65% at 30% 30%, color-mix(in oklab, var(--brand) 40%, transparent), transparent 60%),
+                     radial-gradient(65% 65% at 70% 70%, color-mix(in oklab, var(--brand-2) 40%, transparent), transparent 60%),
+                     var(--bg-soft);
+    }
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    /* ==========================
+       Styled Light — Lavender paper with Purple × Amber accents
+       ========================== */
+    [data-theme="light"]{
+      --bg:#faf7ff;          /* soft lavender paper */
+      --bg-soft:#ffffff;     /* card background */
+      --txt:#0b1220;         /* main text */
+      --sub:#4b5563;         /* secondary text */
+      --brand:#7c3aed;       /* purple (deeper) */
+      --brand-2:#f59e0b;     /* amber */
+      --ok:#059669;          /* green */
+      --warn:#d97706;        /* amber darker */
+      --muted:#ece6f6;       /* borders */
+      --shadow: 0 18px 40px rgba(15, 23, 42, .08);
+      --portrait-bg: radial-gradient(65% 65% at 30% 30%, color-mix(in oklab, var(--brand) 22%, transparent), transparent 60%),
+                     radial-gradient(65% 65% at 70% 70%, color-mix(in oklab, var(--brand-2) 22%, transparent), transparent 60%),
+                     var(--bg-soft);
+    }
 
-    <link rel="stylesheet" href="css/aos.css">
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      /* Dark: neutral glows to keep the vibe dark‑grey */
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(255,255,255,.035), transparent 60%),
+        radial-gradient(1000px 700px at -20% -10%, rgba(255,255,255,.03), transparent 55%),
+        var(--bg);
+      color:var(--txt);
+      line-height:1.6;
+    }
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    /* Light theme background with purple/amber tint */
+    [data-theme="light"] body{
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(124,58,237,.10), transparent 60%),
+        radial-gradient(900px 700px at -10% -10%, rgba(245,158,11,.10), transparent 60%),
+        var(--bg);
+    }
 
-<style>
+    .container{max-width:1100px; margin:0 auto; padding: 24px;}
+    header{position:sticky; top:0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 78%, transparent); border-bottom:1px solid var(--muted); z-index:10}
+    [data-theme="light"] header{ background: rgba(255,255,255,.7); border-bottom-color: var(--muted); }
+    nav{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--txt)}
+    .brand .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(45deg, var(--brand), var(--brand-2)); box-shadow:0 0 0 4px color-mix(in oklab, var(--brand) 20%, transparent)}
+    .brand strong{font-weight:700; letter-spacing:.2px}
+    .menu a{color:var(--sub); text-decoration:none; padding:8px 12px; border-radius:10px}
+    .menu a:hover{background:var(--muted); color:var(--txt)}
+    .toggle{border:1px solid var(--muted); background:var(--bg-soft); color:var(--txt); border-radius:12px; padding:8px 12px; cursor:pointer}
 
-/*======================================
-//--//-->   ABOUT
-======================================*/
+    .hero{display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; padding: 40px 0}
+    .card{background:linear-gradient(180deg, color-mix(in oklab, var(--bg-soft) 92%, transparent), var(--bg-soft)); border:1px solid var(--muted); border-radius: var(--radius); box-shadow: var(--shadow)}
+    .p24{padding:24px}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid var(--muted); border-radius:999px; font-size:12px; color:var(--sub); background: color-mix(in oklab, var(--bg) 85%, transparent)}
+    [data-theme="light"] .pill{ background: linear-gradient(0deg, rgba(124,58,237,.06), rgba(245,158,11,.06)); }
 
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
+    h1{font-size: clamp(28px, 5vw, 44px); line-height:1.18; margin:10px 0 14px}
+    .lead{font-size: clamp(15px, 2.2vw, 18px); color:var(--sub); margin: 0 0 18px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--muted); text-decoration:none; color:var(--txt); background: var(--bg-soft)}
+    .btn.primary{background: linear-gradient(90deg, var(--brand), var(--brand-2)); border:0; color:white}
+    .btn:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
 
-.about-mf .about-img {
-  margin-bottom: 2rem;
-}
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:18px}
+    .span-12{grid-column: span 12}
+    .span-8{grid-column: span 8}
+    .span-4{grid-column: span 4}
+    @media (max-width: 900px){ .hero{grid-template-columns: 1fr} .span-8,.span-4{grid-column: span 12} }
 
-.about-mf .about-img img {
-  margin-left: 10px;
-}
+    section{scroll-margin-top:80px; margin: 30px 0 40px}
+    section h2{font-size: clamp(20px, 2.6vw, 28px); margin:0 0 10px}
+    section p.sub{color:var(--sub); margin:0 0 14px}
 
+    .about .kv{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .chip{font-size:12px; padding:6px 10px; background:color-mix(in oklab, var(--bg) 85%, transparent); border:1px solid var(--muted); border-radius:999px}
+    [data-theme="light"] .chip{ background: linear-gradient(0deg, rgba(124,58,237,.05), rgba(245,158,11,.05)); }
 
-.skill-mf .progress {
-  /* background-color: #cde1f8; */
-  margin: .5rem 0 1.2rem 0;
-  border-radius: 0;
-  height: .7rem;
-}
+    .projects .controls{display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .controls .left{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    select, input[type="search"]{background:var(--bg-soft); color:var(--txt); border:1px solid var(--muted); border-radius:10px; padding:8px 10px}
 
-.skill-mf .progress .progress-bar {
-  height: .7rem;
-  background-color: #ffbd39;
-}
+    .repo-grid{display:grid; grid-template-columns: repeat(auto-fill,minmax(260px, 1fr)); gap:16px; margin-top:16px}
+    .repo{display:flex; flex-direction:column; gap:10px; padding:16px; border:1px solid var(--muted); border-radius:14px; background:linear-gradient(180deg, color-mix(in oklab, var(--bg-soft) 95%, transparent), var(--bg-soft))}
+    .repo h3{font-size:16px; margin:0}
+    .repo h3 a{color:var(--txt); text-decoration:none}
+    .repo p{color:var(--sub); margin:0; font-size:14px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; align-items:center; color:var(--sub); font-size:12px}
+    .topic{font-size:11px; padding:4px 8px; border:1px solid var(--muted); border-radius:999px; color:var(--sub)}
 
+    .skeleton{animation: pulse 1.2s infinite ease-in-out; background: linear-gradient(90deg, color-mix(in oklab, var(--bg) 85%, transparent), color-mix(in oklab, var(--bg) 80%, transparent) 25%, color-mix(in oklab, var(--bg) 85%, transparent) 50%); background-size:200% 100%; height:120px; border-radius:14px; border:1px solid var(--muted)}
+    @keyframes pulse{0%{background-position:0 0}100%{background-position:-200% 0}}
 
-/* Animation styles */
-#typing-animation {
-  position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
-}
+    footer{color:var(--sub); border-top:1px solid var(--muted); margin-top:40px; padding:20px 0}
+    .links{display:flex; gap:10px; flex-wrap:wrap}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
-#typing-animation:before {
-  content: "";
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
-}
+    /* ===== Portrait styles ===== */
+    .portrait{display:grid; place-items:center; gap:12px}
+    .portrait .circle{width: clamp(160px, 40vw, 280px); aspect-ratio:1; border-radius:50%; padding:10px; background: var(--portrait-bg); border:1px solid var(--muted); box-shadow: var(--shadow);} 
+    .portrait img{width:100%; height:100%; object-fit:cover; border-radius:50%; display:block}
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
+    /* ===== Experience section ===== */
+    .experience .xp-grid{display:grid; grid-template-columns: 1fr; gap:18px}
+    .experience .xp{position:relative; background:linear-gradient(180deg, color-mix(in oklab, var(--bg-soft) 96%, transparent), var(--bg-soft)); border:1px solid var(--muted); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 18px 18px 22px}
+    .experience .xp::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px; background:linear-gradient(180deg, var(--brand), var(--brand-2))}
+    .experience .role{font-weight:700; font-size:18px}
+    .experience .meta{color:var(--sub); font-size:14px; margin-top:4px}
+    .experience .desc{margin-top:10px}
 
-@keyframes typing-cursor {
-  from {
-    width: 5px;
-  }
-  to {
-    width: 0;
-  }
-}
+    @media (min-width:900px){ .experience .xp-grid{grid-template-columns: 1fr 1fr} }
 
+    /* ===== Stats strip ===== */
+    .stats{position:relative; padding:40px 0 30px; background:
+      radial-gradient(800px 400px at 50% -200px, rgba(139,92,246,.12), transparent 60%),
+      radial-gradient(800px 400px at 50% 200px, rgba(245,158,11,.08), transparent 60%),
+      var(--bg);
+    }
+    .stat-grid{max-width:1100px; margin:0 auto; display:grid; grid-template-columns: repeat(3,1fr); gap:24px; padding:0 24px}
+    .stat{background: var(--bg-soft); border:1px solid var(--muted); border-radius:16px; box-shadow: var(--shadow); padding:28px; text-align:center}
+    .stat .num{font-size:36px; font-weight:800; color: var(--brand-2)}
+    .stat .label{color: var(--sub); margin-top:8px}
+    @media (max-width:900px){ .stat-grid{grid-template-columns:1fr} }
 
-/* project image zoom effect */
-
-.zoom-effect {
-  overflow: hidden;
-  transition: transform 0.3s ease-out;
-}
-
-.zoom-effect:hover {
-  transform: scale(1.1);
-}
-
-
-</style>
-
-
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Prathamesh Bhavsar</a>
-	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-	  <section id="home-section" class="hero">
-		  <div class="home-slider  owl-carousel">
-	       <div class="slider-item ">
-	      	<div class="overlay"></div>
-	         <div class="container">
-	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-				<div class="ftco-section ftco-hireme img margin-top" 
-						style="
-						background-image: url('images/bg_1.png');">
-					<div class="overlay"></div>
-				</div>
-		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-		          	<div class="text">
-		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Prathamesh Bhavsar</span></h1>
-
-						<!-- Element to contain animated typing -->
-						<span id="typing-animation"></span>
-
-						<script>
-
-						// Initialize the typing animation
-						const typingAnimationElement = document.getElementById('typing-animation');
-
-						// Create an array of typing text
-						const typingTexts = [
-						'Software Development Engineer  '
-						];
-
-						// Create a function to display the typing animation for a given text
-						function playTypingAnimation(text) {
-						// Loop through each character and add it to the element
-						for (let i = 0; i < text.length; i++) {
-							setTimeout(() => {
-							typingAnimationElement.textContent += text[i];
-							}, i * 200); // Increase the delay to slow down the typing animation
-						}
-
-						// Once the animation is complete, reset the text and start over
-						setTimeout(() => {
-							typingAnimationElement.textContent = '';
-							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-						}, text.length * 200);
-						}
-
-						// Start the typing animation loop
-						playTypingAnimation(typingTexts[0]);
-
-						</script>
-
-						<br>
-						<br>
-			            <h2>With over 3 years of experience</h2>
-						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
-						<!-- <br> -->
-						<p><a href="https://github.com/prathameshbhavsar19" class="btn btn-primary py-3 px-4 class">My works</a>
-							<a href="https://github.com/prathameshbhavsar19/Certificates" class="btn btn-white btn-outline-white py-3 px-4">Certifications</a> 
-		            </div>
-		          </div>
-	        	</div>
-	        </div>
-	      </div>
-		</div>
-    </section>
-
-
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-    	<div class="container">
-			<div class="row">
-				<div class="row d-flex align-items-stretch">
-				<!-- <div class="row d-flex"> -->
-					<div class="col-md-6 col-lg-5 d-flex">
-						<div class="img-about img d-flex align-items-stretch">
-							<div class="overlay">
-								<div class="row">
-									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
-									</div>
-									<!-- Details next to profile image -->
-									<div class="col-sm-6 col-md-7">
-									  <div class="about-info">
-										<p><span class="title-s">Name: </span> <span>Prathamesh Bhavsar</span></p>
-										<p><span class="title-s">Experience: </span> <span>4 years</span></p>
-										<p><span class="title-s">Address: </span> <span>Dallas, Texas</span></p>
-									  </div>
-									</div>
-								  </div>
-
-								<div class="skill-mf">
-									<p class="title-s">Skills</p>
-								
-									<span>SQL</span> <span class="pull-right"></span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								
-									<span>Python</span> <span class="pull-right"></span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								
-									<span>Data Engineering</span> <span class="pull-right"></span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								
-									<span>Machine Learning</span> <span class="pull-right"></span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								
-									<span>Cloud Computing (GCP/AWS)</span> <span class="pull-right"></span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								
-									<span>ETL & Big Data</span> <span class="pull-right"></span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-						<div class="row justify-content-start pb-3">
-							<div class="col-md-12 heading-section ftco-animate">
-								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About Me</h2>
-								
-								<p>I am a Software Development Engineer pursuing a Master’s in Computer Engineering, with 3+ years of experience developing and automating solutions across 	
-									platforms like Salesforce, SQL, and SAP. Skilled in Python, UiPath, and Machine Learning, I have led RPA projects and conducted data analysis to drive 	
-									efficiency and insights. Currently, I am expanding my expertise in Machine Learning and Data Engineering, staying up to date with the latest advancements 	
-									to develop impactful and scalable solutions.</p>
-								<ul class="about-info mt-4 px-md-0 px-2">
-									<li class="d-flex"><span>Profile:</span> <span>Software Development, Machine Learning &amp; Data Engineering</span></li>
-									<li class="d-flex"><span>Domain:</span> <span>Automation, AI/ML, Cloud Computing, and Data Engineering</span></li>
-									<li class="d-flex"><span>Education:</span> <span>Master of Science in Computer Engineering</span></li>
-									<li class="d-flex"><span>Language:</span> <span>English, Hindi</span></li>
-									<li class="d-flex"><span>BI Tools:</span> <span>Looker, Power BI, Tableau</span></li>
-									<li class="d-flex"><span>Other Skills:</span> <span>Cloud Computing (GCP, AWS), Apache Airflow, BigQuery, SQL, Python, Git, JIRA, UiPath</span></li>
-									<li class="d-flex"><span>Interest:</span> <span>Soccer, Workout &amp; Fitness</span></li>
-								</ul>
-									
-							</div>
-						</div>
-
-
-						<div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<p><a href="https://www.linkedin.com/in/prathameshbhavsar/" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </section>
-
-
-
-	
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
-			<p>Software Development Engineer with 3+ years of experience in building and automating solutions across platforms. Skilled in Python, machine learning, and data engineering, with hands-on experience in cloud technologies. Currently pursuing an MS in Computer Engineering and actively expanding expertise in AI, big data, and scalable systems.</p>
-		  </div>
+    /* tiny test status badge */
+    #testStatus{position:fixed; right:12px; bottom:12px; padding:6px 10px; border-radius:10px; font-size:12px; border:1px solid var(--muted); background:var(--bg-soft); z-index:99}
+    #testStatus.pass{color:#10b981}
+    #testStatus.fail{color:#ef4444}
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top">
+          <span class="dot" aria-hidden="true"></span>
+          <strong>Prathamesh Bhavsar</strong>
+        </a>
+        <div class="menu" role="navigation" aria-label="Primary">
+          <!-- removed About link per request -->
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
         </div>
+        <button id="themeToggle" class="toggle" aria-label="Toggle theme">☀︎/☾</button>
+      </nav>
+    </div>
+  </header>
 
-		<div class="row">
-			<h1 class="big-4">Experience</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-		<div class="row">
-			<div class="col-md-6">
-				<div class="resume-wrap ftco-animate">
-					<span class="date">Jul 2021 - Aug 2024</span>
-					<h2>Software Development Engineer</h2>
-					<span class="position">EnelX Services Private Limited – Mumbai, India</span>
-					<p class="mt-4"> 
-						<ul>
-							<li>Automated 30+ business processes in SAP, ServiceNow, and Salesforce, saving 138 hours/month and improving efficiency.</li>
-							<li>Developed scalable ETL pipelines to process large datasets, optimizing data ingestion and transformation by 40%.</li>
-							<li>Resolved 3 critical issues in Utility Bill Management, reducing duplicate bills from 12% to 3% and saving 70 hours/month.</li>
-							<li>Built predictive models for invoice processing, reducing billing discrepancies by 25% and improving accuracy.</li>
-							<li>Developed and optimized 25-30 REST APIs, ensuring seamless data integration with internal and external platforms.</li>
-							<li>Designed and optimized SQL databases, improving query performance by 30% through indexing and partitioning strategies.</li>
-							<li>Automated Excel and SharePoint tasks using UiPath, saving 20 hours/month and streamlining workflows.</li>
-							<li>Enhanced SAP and ServiceNow automation, saving 3 FTEs worth of human effort and improving operational efficiency.</li>
-							<li>Led the Utility Bill Management project for the RPA team, resolving major issues and stabilizing the project.</li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		
-			<div class="col-md-6">
-				<div class="resume-wrap ftco-animate">
-					<span class="date">Jun 2018 - Jul 2019</span>
-					<h2>Web Developer Intern</h2>
-					<span class="position">Sahu Technologies – Mumbai, India</span>
-					<p class="mt-4"> 
-						<ul>
-							<li>Implemented Entity Framework in 3 projects, improving application performance by 30% and saving 40 hours.</li>
-							<li>Developed and optimized 10-15 REST APIs using Java and SQL, reducing response times from 200ms to 120ms.</li>
-							<li>Implemented data preprocessing techniques for customer analytics, enabling data-driven insights for stakeholders.</li>
-							<li>Contributed to 3 projects using Agile (Scrum/Kanban), leading to a 25% faster project delivery.</li>
-							<li>Enhanced UI functionality for web applications, improving user experience and interface responsiveness.</li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>		
-		
-
-		<br>
-		<br>
-
-		<div class="row">
-			<h1 class="big-4">Education</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-			<div class="row">
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2024-2026</span>
-    					<h2>MS in Computer Engineering</h2>
-    					<span class="position">University of Texas at Dallas</span>
-    					<p class="mt-4">GPA: 3.8</p>
-    				</div>
-    			</div>
-
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2017-2021</span>
-    					<h2>Bachelor of Engineering</h2>
-    					<span class="position">Mumbai University</span>
-    					<p class="mt-4">GPA: 3.5</p>
-    				</div>
-				</div>
-    		</div>
-
-    		<div class="row justify-content-center mt-5">
-    			<div class="col-md-6 text-center ftco-animate">
-    				<p><a href="https://drive.google.com/file/d/1f3UUFCRw4mJTZ5b1jnuOWFok99mYzJ_b/view?usp=sharing" class="btn btn-primary py-4 px-5">Download CV</a></p>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-  
-
-    <section class="ftco-section" id="project-section">
-		<div class="row">
-			<h1 class="big-4">Projects</h1>
-		</div>
-		<br>
-		<br>
-		<div class="container px-4">
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="https://github.com/prathameshbhavsar19/NeuroScan" 
-						   class="block-20 zoom-effect" 
-						   style="background-image: url('images/proj_1.jpg'); background-size: contain; background-position: center; aspect-ratio: 16/9;">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="https://github.com/prathameshbhavsar19/NeuroScan">NeuroScan - Brain Tumor Detection</a></h3>
-							<p>Deep learning-based project aimed at detecting brain tumors from MRI scans using transfer learning techniques.</p>
-						</div>
-					</div>
-				</div>
-		
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="https://github.com/prathameshbhavsar19/UberDataAnalytics" 
-						   class="block-20 zoom-effect" 
-						   style="background-image: url('images/proj_2.jpg'); background-size: contain; background-position: center; aspect-ratio: 16/9;">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="https://github.com/prathameshbhavsar19/UberDataAnalytics">Uber Data Analytics Project</a></h3>
-							<p>Built an ETL pipeline using Apache Airflow and BigQuery to analyze Uber data for insights.</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="https://github.com/prathameshbhavsar19/LinkedInPostGenerator" 
-						   class="block-20 zoom-effect" 
-						   style="background-image: url('images/genai_thumbnail.png'); background-size: contain; background-position: center; aspect-ratio: 16/9;">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="https://github.com/prathameshbhavsar19/LinkedInPostGenerator">GenAI Post Generator</a></h3>
-							<p>Created a GenAI tool using LLama on Groq API to auto-generate LinkedIn posts based on user style and metadata.</p>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>	  
-    </section>
-
-	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
-		<div class="container">
-			<div class="row d-md-flex align-items-center">
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18">
-						<div class="text">
-							<strong class="number" data-number="10">0</strong>
-							<span>Projects Completed and counting</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18">
-						<div class="text">
-							<strong class="number" data-number="250">0</strong>
-							<span>Sleepless Nights</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18">
-						<div class="text">
-							<strong class="number" data-number="500">0</strong>
-							<span>Cups of Coffee</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-		<div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-			<div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>More projects on<span> GitHub </span></h2>
-					<div class="heading">
-						<h4> I specialize in automation, AI solutions, and data engineering </h4>
-						<br>
-						<p><a href="https://github.com/prathameshbhavsar19" class="btn btn-primary py-3 px-5">GitHub</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
-          </div>
+  <main id="main" class="container">
+    <section class="hero" id="top">
+      <div class="card p24">
+        <span class="pill">Software Development Engineer · AI/ML & Data</span>
+        <h1>I build handy, data‑driven stuff — end to end.</h1>
+        <p class="lead">3+ years across web, RPA, and ML. I like taking ideas from “hmm” to “shipped”: APIs, ETL/data pipelines, and little AI helpers. Based in Richardson, TX.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects" aria-label="View projects">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14m7-7H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            See Projects
+          </a>
+          <a class="btn" id="resumeBtn" href="resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
+          <a class="btn" href="https://github.com/prathameshbhavsar19" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/prathameshbhavsar" target="_blank" rel="noopener">LinkedIn</a>
         </div>
+      </div>
 
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-map-signs"></span>
-          		</div>
-          		<h3 class="mb-4">Address</h3>
-	            <p>Dallas, Texas</p>
-	          </div>
+      <!-- Right card now: portrait + ABOUT blurb + quick bits (casual tone) -->
+      <div class="card p24">
+        <figure class="portrait" aria-labelledby="photoTitle">
+          <div class="circle">
+            <img src="about-me.png" alt="Portrait of Prathamesh Bhavsar" loading="eager" decoding="async" />
           </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-phone2"></span>
-          		</div>
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel://+19402799009">+1(940)279-9009</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-paper-plane"></span>
-          		</div>
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:prathameshbhavsar19@gmail.com">prathameshbhavsar19@gmail.com</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-globe"></span>
-          		</div>
-          		<h3 class="mb-4">Download Resume</h3>
-	            <p><a href="https://drive.google.com/file/d/1v-QJSYz0lVNUBYuxsWN2lwT9b2IB_ocu/view?usp=sharing">Click Here</a></p>
-	          </div>
-          </div>
+          <figcaption id="photoTitle" class="sub" style="text-align:center">Hey! I'm Prathamesh 👋</figcaption>
+        </figure>
 
-		  <div class="container">
-			<br>
-			<br>
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://www.linkedin.com/in/prathameshbhavsar/"><span class="icon-linkedin"></span></a></li>  
-				      <li class="ftco-animate"><a href="https://www.instagram.com/aye_prathamesh/"><span class="icon-instagram"></span></a></li>
-					</ul>
-				<br>
-		   </div>
-   </div>
- </section>
+        <p id="aboutBlurb" class="sub" style="margin:10px 0 16px">I like building things that feel simple and run fast. Lately I’m tinkering with ML agents and data plumbing. I care about clean UIs, readable code, and shipping small wins often.</p>
 
+        <h2 style="margin-top:4px">Quick bits</h2>
+        <ul style="margin:10px 0 0 18px; padding:0">
+          <li>What I’m into: ML/AI agents, data engineering, cloud.</li>
+          <li>Previously @ Enel X — shipped automations that saved 100+ hrs/month.</li>
+        </ul>
+        <div class="about kv">
+          <span class="chip">Python</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">React</span>
+          <span class="chip">PostgreSQL/BigQuery</span>
+          <span class="chip">Docker</span>
+          <span class="chip">GCP/AWS</span>
+          <span class="chip">Airflow</span>
+        </div>
+      </div>
+    </section>
 
- 
-	
-    <footer class="ftco-footer ftco-section">
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-12 text-center">
-  
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by Prathamesh Bhavsar</a>
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
+    <section id="experience" class="experience">
+      <h2>Experience</h2>
+      <div class="xp-grid">
+        <article class="xp">
+          <div class="role">Data Engineer Intern</div>
+          <div class="meta">Tenet Healthcare · Dallas, TX · Aug 2025 – Present</div>
+          <p class="desc">Tuning BigQuery and Airflow so data moves faster and cheaper: refactors and partitioning shaved <strong>28%</strong> in cost and <strong>35%</strong> in latency. Built reliable Airflow DAGs with retries & SLAs that run at <strong>99.2%</strong> success, plus warehouse QA checks that cut mismatches <strong>82%</strong> across <strong>12</strong> tables.</p>
+        </article>
+        <article class="xp">
+          <div class="role">Software Development Engineer</div>
+          <div class="meta">EnelX Services · Mumbai, India · Jul 2021 – Aug 2024</div>
+          <p class="desc">Owned a mix of automation, APIs and UI. Shipped <strong>30+</strong> automations across SAP/ServiceNow/Salesforce (saving <strong>100s of hours</strong>), built <strong>25–30</strong> APIs and tuned SQL, and refreshed the React UI for a <strong>20%</strong> engagement bump. Helped squash duplicate bills in UBM (<strong>12% → 3%</strong>) and delivered several time‑savers: SAP↔ServiceNow syncs (<strong>700 hrs</strong> saved), Excel/SharePoint clean‑ups (<strong>90%</strong> fewer data errors) and faster MongoDB reporting.</p>
+        </article>
+        <article class="xp">
+          <div class="role">Web Development Intern</div>
+          <div class="meta">Sahu Technologies · Mumbai, India · Jun 2018 – Jul 2019</div>
+          <p class="desc">Got my hands dirty with Java, SQL and Entity Framework—built and tuned REST APIs (latency <strong>200ms → 120ms</strong>), worked in Scrum/Kanban teams for <strong>25%</strong> faster delivery, and iterated UI components that lowered bounce by <strong>20%</strong>.</p>
+        </article>
+      </div>
+    </section>
 
+    <section id="stats" class="stats" aria-label="Fun stats">
+      <div class="stat-grid">
+        <div class="stat"><div class="num" data-target="10">0</div><div class="label">Projects Completed and counting</div></div>
+        <div class="stat"><div class="num" data-target="250">0</div><div class="label">Sleepless Nights</div></div>
+        <div class="stat"><div class="num" data-target="500">0</div><div class="label">Cups of Coffee</div></div>
+      </div>
+    </section>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <!-- Removed the standalone About section per request -->
 
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div class="controls">
+        <div class="left">
+          <label>
+            <span class="sr-only">Search</span>
+            <input id="search" type="search" placeholder="Search repos…" />
+          </label>
+          <label>
+            <span class="sr-only">Sort</span>
+            <select id="sort">
+              <option value="featured">Featured first</option>
+              <option value="updated">Recently updated</option>
+              <option value="name">Name A→Z</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <button id="loadMore" class="btn">Load more</button>
+        </div>
+      </div>
+      <div id="repoGrid" class="repo-grid" aria-live="polite" aria-busy="true"></div>
+      <div id="repoSkeletons" class="repo-grid" style="margin-top:10px"></div>
+      <p id="repoError" style="display:none; color:var(--warn)">Couldn’t load GitHub repositories. Please refresh later.</p>
+    </section>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
-    
-  </body>
+    <section id="resume">
+      <h2>Resume</h2>
+      <div class="cta">
+        <a class="btn primary" id="resumePrimary" href="resume.pdf" target="_blank" rel="noopener">Open Resume</a>
+        <a class="btn" href="mailto:prathameshbhavsar19@gmail.com">Email Me</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="sub">Best way to reach me: email or LinkedIn. Always up for a chat about software, data, or fun side projects.</p>
+      <div class="links">
+        <a class="btn" href="mailto:prathameshbhavsar19@gmail.com">✉️ prathameshbhavsar19@gmail.com</a>
+        <a class="btn" href="https://github.com/prathameshbhavsar19" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/prathameshbhavsar" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="padding:0">
+        <small>© <span id="year"></span> Prathamesh Bhavsar</small>
+      </div>
+    </footer>
+  </main>
+
+  <div id="testStatus" aria-live="polite" class="pass" style="display:none"></div>
+
+  <script>
+  // ——— Configuration ———
+  const CONFIG = {
+    githubUser: 'prathameshbhavsar19',
+    perPage: 12,           // repos per batch
+    maxRepos: 60,          // safety cap
+    resumeUrl: 'resume.pdf'// set to an external URL if you host your CV elsewhere
+  };
+
+  // ——— Theme toggle ———
+  const themeBtn = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  if(stored) document.documentElement.setAttribute('data-theme', stored);
+  themeBtn.addEventListener('click', ()=>{
+    const cur = document.documentElement.getAttribute('data-theme')||'dark';
+    const next = (cur==='dark')?'light':'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // ——— Footer year ———
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ——— Resume buttons ———
+  document.getElementById('resumeBtn').href = CONFIG.resumeUrl;
+  document.getElementById('resumePrimary').href = CONFIG.resumeUrl;
+
+  // ——— Projects from GitHub ———
+  const repoGrid = document.getElementById('repoGrid');
+  const repoSkeletons = document.getElementById('repoSkeletons');
+  const repoError = document.getElementById('repoError');
+  const search = document.getElementById('search');
+  const sortSel = document.getElementById('sort');
+  const loadMoreBtn = document.getElementById('loadMore');
+
+  let allRepos = [];
+  let shownCount = 0;
+
+  function showSkeletons(n=8){
+    repoSkeletons.innerHTML = '';
+    for(let i=0;i<n;i++){
+      const sk = document.createElement('div');
+      sk.className = 'skeleton';
+      repoSkeletons.appendChild(sk);
+    }
+    repoGrid.setAttribute('aria-busy','true');
+  }
+  function hideSkeletons(){ repoSkeletons.innerHTML = ''; repoGrid.setAttribute('aria-busy','false'); }
+
+  function timeAgo(dateStr){
+    const d = new Date(dateStr); const s = Math.floor((Date.now()-d.getTime())/1000);
+    const t = [ ['y',31536000], ['mo',2592000], ['d',86400], ['h',3600], ['m',60] ];
+    for(const [label,sec] of t){ if(s>=sec) return Math.floor(s/sec)+label; }
+    return s+"s";
+  }
+
+  async function fetchRepos(){
+    showSkeletons();
+    try{
+      const headers = {
+        'Accept':'application/vnd.github+json',
+        'X-GitHub-Api-Version':'2022-11-28'
+      };
+      // Page through user repos until we reach maxRepos or no more pages
+      let page=1; const gathered=[];
+      while(gathered.length < CONFIG.maxRepos){
+        const url = `https://api.github.com/users/${CONFIG.githubUser}/repos?sort=updated&per_page=100&page=${page}`;
+        const res = await fetch(url,{headers});
+        if(!res.ok) throw new Error(`GitHub API error ${res.status}`);
+        const batch = await res.json();
+        if(!Array.isArray(batch) || batch.length===0) break;
+        gathered.push(...batch);
+        if(batch.length < 100) break; // no more pages
+        page++;
+      }
+      allRepos = gathered
+        .filter(r => !r.fork && !r.archived)
+        .map(r => ({
+          id:r.id,
+          name:r.name,
+          full_name:r.full_name,
+          html_url:r.html_url,
+          description:r.description,
+          language:r.language,
+          stargazers_count:r.stargazers_count, // kept in data, not shown
+          forks_count:r.forks_count,
+          open_issues_count:r.open_issues_count,
+          updated_at:r.updated_at,
+          topics:r.topics||[],
+          homepage:r.homepage
+        }));
+      render(true);
+    }catch(err){
+      console.error(err);
+      repoError.style.display='block';
+    }finally{ hideSkeletons(); }
+  }
+
+  function matchesQuery(repo, q){
+    if(!q) return true;
+    q=q.toLowerCase();
+    const hay = [repo.name, repo.description, repo.language, ...(repo.topics||[])].filter(Boolean).join(' ').toLowerCase();
+    return hay.includes(q);
+  }
+
+  function sortRepos(list){
+    const how = sortSel.value;
+    if(how==='name') return [...list].sort((a,b)=>a.name.localeCompare(b.name));
+    if(how==='updated') return [...list].sort((a,b)=> new Date(b.updated_at)-new Date(a.updated_at));
+    // featured: repos with topic 'portfolio' first, then updated
+    const withScore = list.map(r=>({r, score: r.topics?.includes('portfolio') ? 1 : 0}));
+    return withScore
+      .sort((a,b)=> (b.score - a.score) || (new Date(b.r.updated_at)-new Date(a.r.updated_at)))
+      .map(x=>x.r);
+  }
+
+  function repoCard(r){
+    const topics = (r.topics||[]).slice(0,5).map(t=>`<span class="topic">${t}</span>`).join('');
+    const homepage = r.homepage ? `<a href="${r.homepage}" target="_blank" rel="noopener" class="btn" style="padding:6px 10px">Live</a>` : '';
+    return `<article class="repo" aria-label="${r.name}">
+      <h3><a href="${r.html_url}" target="_blank" rel="noopener">${r.name}</a></h3>
+      <p>${r.description ? r.description.replace(/</g,'&lt;') : '—'}</p>
+      <div class="meta">
+        <span title="Primary language">🧩 ${r.language || 'n/a'}</span>
+        <span title="Last updated">⏱️ ${timeAgo(r.updated_at)} ago</span>
+      </div>
+      <div class="meta">${topics}</div>
+      <div class="meta">${homepage}</div>
+    </article>`;
+  }
+
+  function render(reset=false){
+    const q = search.value.trim();
+    const filtered = allRepos.filter(r=>matchesQuery(r,q));
+    const sorted = sortRepos(filtered);
+
+    if(reset){ shownCount = 0; repoGrid.innerHTML=''; }
+
+    const next = sorted.slice(shownCount, shownCount + CONFIG.perPage);
+    repoGrid.insertAdjacentHTML('beforeend', next.map(repoCard).join(''));
+    shownCount += next.length;
+
+    loadMoreBtn.style.display = (shownCount < sorted.length) ? 'inline-flex' : 'none';
+  }
+
+  search.addEventListener('input', ()=> render(true));
+  sortSel.addEventListener('change', ()=> render(true));
+  loadMoreBtn.addEventListener('click', ()=> render(false));
+
+  // ——— Animated counters for stats ———
+  function animateCounters(){
+    const nums = document.querySelectorAll('.stat .num');
+    const tween = (el, start, end, t0, dur)=>{
+      const t = Math.min(1, (performance.now()-t0)/dur);
+      el.textContent = String(Math.floor(start + t*(end-start)));
+      if(t<1) requestAnimationFrame(()=>tween(el,start,end,t0,dur));
+    };
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target; const target = parseInt(el.getAttribute('data-target')||'0',10);
+          tween(el, 0, target, performance.now(), 900);
+          obs.unobserve(el);
+        }
+      });
+    },{threshold:.6});
+    nums.forEach(n=>io.observe(n));
+  }
+  animateCounters();
+
+  // ——— Minimal tests (run once on load) ———
+  (function runTests(){
+    const status = document.getElementById('testStatus');
+    function assert(name, cond){
+      if(!cond) throw new Error('Test failed: '+name);
+    }
+    try{
+      // Test data
+      const sample = [
+        { name:'b', updated_at:'2024-01-02T00:00:00Z', topics:[], language:'JS' },
+        { name:'a', updated_at:'2024-01-03T00:00:00Z', topics:['portfolio'], language:'TS' },
+        { name:'c', updated_at:'2024-01-01T00:00:00Z', topics:[], language:'Py' }
+      ];
+
+      // Featured sort (topic 'portfolio' → first)
+      const prev = sortSel.value; sortSel.value = 'featured';
+      const featured = sortRepos(sample);
+      assert('featured first element has portfolio topic', (featured[0].topics||[]).includes('portfolio'));
+
+      // Updated desc
+      sortSel.value = 'updated';
+      const up = sortRepos(sample);
+      assert('updated sorting desc', up[0].updated_at === '2024-01-03T00:00:00Z');
+
+      // Name A→Z
+      sortSel.value = 'name';
+      const byName = sortRepos(sample);
+      assert('name sorting A→Z', byName[0].name === 'a');
+
+      // repoCard should NOT include star symbol
+      const html = repoCard({name:'x', html_url:'#', description:'d', language:'JS', updated_at:'2024-01-01T00:00:00Z', topics:[], homepage:''});
+      assert('repoCard no star symbol', !/\u2B50|⭐/.test(html));
+
+      // About section removed, blurb moved under photo
+      assert('no standalone about section', !document.querySelector('section#about'));
+      assert('about blurb present under portrait', !!document.getElementById('aboutBlurb'));
+
+      // Nav no longer contains About link
+      const menuText = document.querySelector('.menu').textContent.toLowerCase();
+      assert('nav without about link', menuText.includes('projects') && !menuText.includes('about'));
+
+      // Stats section exists & counters ready
+      const statNums = document.querySelectorAll('.stat .num');
+      assert('stats counters exist', statNums.length===3);
+      const qbH2 = Array.from(document.querySelectorAll('h2')).find(h=>/quick bits/i.test(h.textContent));
+      const qbCount = qbH2 && qbH2.nextElementSibling ? qbH2.nextElementSibling.querySelectorAll('li').length : 0;
+      assert('quick bits trimmed to two', qbCount===2);
+
+      // Experience section exists with three tiles
+      const xpTiles = document.querySelectorAll('#experience .xp');
+      assert('experience has 3 tiles', xpTiles.length === 3);
+      const firstRole = xpTiles[0].querySelector('.role')?.textContent || '';
+      assert('experience first tile mentions Data Engineer', /data engineer/i.test(firstRole));
+
+      // EXTRA TESTS
+      // 1) Stats labels text present
+      const labels = Array.from(document.querySelectorAll('.stat .label')).map(x=>x.textContent.toLowerCase());
+      assert('stats labels correct', labels.some(t=>t.includes('projects completed')) && labels.some(t=>t.includes('sleepless nights')) && labels.some(t=>t.includes('cups of coffee')));
+      // 2) Skeleton show/hide works
+      showSkeletons(3); assert('skeletons show 3', document.getElementById('repoSkeletons').children.length===3); hideSkeletons(); assert('skeletons cleared', document.getElementById('repoSkeletons').children.length===0);
+
+      status.textContent = 'Tests: Passed';
+      status.className = 'pass';
+      status.style.display = 'block';
+      console.info('All tests passed.');
+    }catch(e){
+      console.error(e);
+      status.textContent = 'Tests: Failed — see console';
+      status.className = 'fail';
+      status.style.display = 'block';
+    }
+  })();
+
+  fetchRepos();
+  </script>
+
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Prathamesh Bhavsar",
+    "jobTitle": "Software Development Engineer",
+    "email": "mailto:prathameshbhavsar19@gmail.com",
+    "url": "https://prathameshbhavsar19.github.io/",
+    "sameAs": [
+      "https://github.com/prathameshbhavsar19",
+      "https://www.linkedin.com/in/prathameshbhavsar"
+    ]
+  }
+  </script>
+
+  <!--
+  Deployment notes (GitHub Pages):
+  1) Put this file as index.html in your repo (e.g., prathameshbhavsar19.github.io).
+  2) Save your photo as /about-me.png (same folder as index.html) so the <img> src works. Or update the src path.
+  3) Add your resume as /resume.pdf OR set CONFIG.resumeUrl to an external link.
+  4) To feature repos in the first row, add the topic "portfolio" to those repositories (Settings → Topics).
+  5) All repos are fetched client-side via GitHub API — no backend needed.
+  -->
+</body>
 </html>
